@@ -26,5 +26,21 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  },
+	"categories": [
+		"Programming Languages"
+	],
+	"engines": {
+		"vscode": "^1.22.0"
+	},
+	"contributes": {
+		"languages": [{
+			"id": "twirl-html",
+			"aliases": ["Play Twirl Template (HTML)", "Play Twirl", "Twirl HTML"],
+			"extensions": [
+				".scala.html"
+			],
+			"configuration": "./language-configuration.json"
+		}]
+	}
 }

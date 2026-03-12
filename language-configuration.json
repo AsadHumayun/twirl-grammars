@@ -28,7 +28,7 @@
     { "open": "'", "close": "'", "notIn": ["string"] },
     { "open": "\"", "close": "\"" },
     { "open": "`", "close": "`" },
-    { "open": "@**", "close": " *@", "notIn": ["string", "comment"] },
+    { "open": "@*", "close": "*@", "notIn": ["string", "comment"] },
     { "open": "/**", "close": " */", "notIn": ["string", "comment"] }
   ],
   "autoCloseBefore": ";:.,=}])>` \n\t",
@@ -44,11 +44,44 @@
     "markers": {
       "start": "^\\s*//\\s*#?region\\b",
       "end": "^\\s*//\\s*#?endregion\\b"
-    }
+    },
   },
   "wordPattern": "(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\-\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)",
   "indentationRules": {
     "increaseIndentPattern": "^((?!\\/\\/).)*(\\{[^}\"'`]*|\\([^)\"'`]*|\\[[^\\]\"'`]*)$",
     "decreaseIndentPattern": "^((?!.*?\\/\\*).*\\*/)?\\s*[\\)\\}\\]].*$"
-  }
+  },
+	"onEnterRules": [
+		/* Used to help provide support for block comments */
+		{
+			// if the previous line is a comment AND ends with "*@" (indicating the end of a block comment)
+			"previousLineText": "^[\\s]*\\*[^*@]*$",
+			"beforeText": "^[\\s]*\\*[^*@]*$",
+			"afterText": "^.*\\*\\@$",
+			"action": {
+				"indent": "none",
+				// then do not append " * " to indicate another comment line
+			}
+		},		
+		{
+			"beforeText": "^@\\*.*$", // match the start of a Twirl block comment
+			"action": {
+				"indent": "none",
+				"appendText": " * " // then add another comment to the next line
+			},
+		},
+		{
+			"previousLineText": "^@\\*[^]*$", // matches the start of a Twirl block comment with anything following it
+			"beforeText": "^[\\s]*\\*[^*@]*$", // matches " * comment" but not " * comment *@"
+			"action": {
+				"indent": "none",
+				"appendText": "* " // then append another comment
+			}
+		}
+	],
+	"colorizedBracketPairs": [
+		["(", ")"],
+		["[", "]"],
+		["{", "}"]
+	]
 }

@@ -1,10 +1,20 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-  "name": "Twirl HTML",
-  "scopeName": "text.html.twirl",
+  "name": "twirl.html",
+  "scopeName": "source.twirl",
+	"fileTypes": ["*.scala.html", ".scala.html"],
+	"foldingStartMarker": "^[^\\S\r\n]*@\\*[^\\S\r\n]*[^\\S\r\n]*.*$",
+	"foldingStopMarker": "^[\\s]*\\*@[^\\S\\r\\n]*$",
+	"repository": {
+		"comment-block-twirl": {
+			"name": "comment.block",
+			"begin": "@\\*",
+			"end": "\\*@"
+		}
+	},
   "patterns": [
-    {
-      "include": "text.html.basic"
-    }
+		{
+			"include": "#comment-block-twirl"
+		}
   ]
 }

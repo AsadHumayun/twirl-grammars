@@ -1,0 +1,30 @@
+{
+  "name": "twirl-grammars",
+  "version": "0.0.1",
+  "description": "TextMate grammars for use with Play framework's Twirl templates in the Scala ecosystem.",
+  "keywords": [
+    "twirl",
+    "grammar",
+    "twirl-grammar",
+    "twirl-template",
+    "twirl-html",
+    "twirl-play",
+    "play-twirl",
+    "scala-play"
+  ],
+  "homepage": "https://github.com/AsadHumayun/twirl-grammars#readme",
+  "bugs": {
+    "url": "https://github.com/AsadHumayun/twirl-grammars/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AsadHumayun/twirl-grammars.git"
+  },
+  "license": "MIT",
+  "author": "Asad Humayun",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

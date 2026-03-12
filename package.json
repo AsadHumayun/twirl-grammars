@@ -40,7 +40,8 @@
 			"extensions": [
 				".scala.html"
 			],
-			"configuration": "./language-configuration.json"
+			"configuration": "./language-configuration.json",
+			"filenamePatterns": ["*.scala.html"]
 		}]
 	}
 }

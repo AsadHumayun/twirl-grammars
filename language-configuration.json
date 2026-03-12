@@ -1,19 +1,14 @@
 {
-	/* WIP */
-
 	/**
 	 * for future devs working on this, docs are at
 	 https://code.visualstudio.com/api/language-extensions/language-configuration-guide
 	 */
-
-	 /* This currently implements the default language config that is on the above docs */
 
   "comments": {
     "lineComment": {
 			"comment": "//",
 			"noIndent": false
 		},
-		// todo: make it auto add * on enter in block comment
     "blockComment": ["@*", "*@"]
   },
   "brackets": [

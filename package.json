@@ -38,6 +38,11 @@
 			"filenamePatterns": ["*.scala.html"],
 			"aliases": ["TwirlGrammars::Twirl:HTML", "Play Twirl", "Twirl HTML"],
 			"configuration": "./language-configuration.json"
+		}],
+		"grammars": [{
+				"language": "twirl-html",
+				"scopeName": "source.twirl",
+				"path": "./syntaxes/twirl-html.tmLanguage.json"	
 		}]
 	}
 }

@@ -10,11 +10,18 @@
 			"name": "comment.block",
 			"begin": "@\\*",
 			"end": "\\*@"
+		},
+		"comment-line-twirl": {
+			"name": "comment.line",
+			"match": "\/\/\/*.*"
 		}
 	},
   "patterns": [
 		{
 			"include": "#comment-block-twirl"
+		},
+		{
+			"include": "#comment-line-twirl"
 		}
   ]
 }

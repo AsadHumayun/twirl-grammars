@@ -6,20 +6,19 @@
   "foldingStartMarker": "^[^\\S\r\n]*@\\*[^\\S\r\n]*[^\\S\r\n]*.*$",
   "foldingStopMarker": "^[\\s]*\\*@[^\\S\\r\\n]*$",
   "repository": {
-		"util-match-parens": {
-			"name": "meta.util.twirl.parens",
-			"begin": "\\(",
-			"end": "\\)",
-			"patterns": [
-				{ "include": "#util-match-parens" },
-				{ "include": "source.scala" }
-			]
-		},
-		"symbols-at": {
-			"name": "keyword.operator",
-			"match": "@"
-		},
-
+    "util-match-parens": {
+      "name": "meta.util.twirl.parens",
+      "begin": "\\(",
+      "end": "\\)",
+      "patterns": [
+        { "include": "#util-match-parens" },
+        { "include": "source.scala" }
+      ]
+    },
+    "symbols-at": {
+      "name": "keyword.operator",
+      "match": "@"
+    },
 
     "comment-block-twirl": {
       "name": "comment.block",
@@ -31,41 +30,35 @@
       "match": "\/\/\/*.*"
     },
 
-		"scala-expr": {
-			"name": "meta.embedded.scala.source.expr",
-			"begin": "(@)[\\w\\.]*\\(",
-			"end": "\\)",
-			"beginCaptures": {
-				"1": { "patterns": [{ "include": "#symbols-at" }] }
-			},
-			"patterns": [
-				{ "include": "#util-match-parens" },
-				{ "include": "source.scala" }
-			]
-		},
+    "scala-expr": {
+      "name": "meta.embedded.scala.source.expr",
+      "begin": "(@)[\\w\\.]*\\(",
+      "end": "\\)",
+      "beginCaptures": {
+        "1": { "patterns": [{ "include": "#symbols-at" }] }
+      },
+      "patterns": [
+        { "include": "#util-match-parens" },
+        { "include": "source.scala" }
+      ]
+    },
 
-		"scala-line": {
-			"begin": "(@)",
-			"end": "\\n",
-			"beginCaptures": {
-				"1": { "patterns": [{ "include": "#symbols-at" }]}
-			},
-			"patterns": [
-				{ "include": "#keyword-at" },
-				{ "include": "source.scala" }
-			]
-		}
+    "scala-line": {
+      "begin": "(@)",
+      "end": "\\n",
+      "beginCaptures": {
+        "1": { "patterns": [{ "include": "#symbols-at" }] }
+      },
+      "patterns": [{ "include": "#keyword-at" }, { "include": "source.scala" }]
+    }
   },
   "patterns": [
     { "include": "#comment-block-twirl" },
     { "include": "#comment-line-twirl" },
-		{ "include": "#scala-expr" },
-		{ "include": "#scala-line" },
-		{ "include": "#symbols-at" },
+    { "include": "#scala-expr" },
+    { "include": "#scala-line" },
+    { "include": "#symbols-at" },
 
-
-
-
-		{ "include": "text.html.derivative" }
+    { "include": "text.html.derivative" }
   ]
 }

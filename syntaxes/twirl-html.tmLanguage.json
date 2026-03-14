@@ -30,13 +30,10 @@
       "name": "comment.line",
       "match": "\/\/\/*.*"
     },
-		"scala-line": {
-			"match": "@"
-		},
 
 		"scala-expr": {
 			"name": "meta.embedded.scala.source.expr",
-			"begin": "(@)\\(",
+			"begin": "(@)[\\w\\.]*\\(",
 			"end": "\\)",
 			"beginCaptures": {
 				"1": { "patterns": [{ "include": "#symbols-at" }] }
@@ -46,6 +43,19 @@
 				{ "include": "source.scala" }
 			]
 		},
+
+		"scala-line": {
+			"begin": "(@)",
+			"end": "\\n",
+			"beginCaptures": {
+				"1": { "patterns": [{ "include": "#symbols-at" }]}
+			},
+			"patterns": [
+				{ "include": "#keyword-at" },
+				{ "include": "source.scala" }
+			]
+		},
+
 		"scala-block": {
 
 		}
@@ -54,6 +64,7 @@
     { "include": "#comment-block-twirl" },
     { "include": "#comment-line-twirl" },
 		{ "include": "#scala-expr" },
+		{ "include": "#scala-line" },
 		{ "include": "#symbols-at" },
 
 

@@ -5,6 +5,7 @@
     - same as above but for `@{...}`;
     - same for `@expr` where `expr` is a single expression;
 	  - make it so `@obj.prop` matches `obj.prop` as a single unit for backspace etc;\
+		- currently fails on presence of implicit params; it should accept any number of following whole parens
 		- this should also work if someone tries to insert a block/expr inline eg `<head>@(scala.source)</head>`
 		- currently, if we have `@(...) {...1}` and `...1}` spans multiple lines, then the grammar will not match all of these in the source.scala scope. This is not the desired behaviour - we might need to put another regex on top of the current `@(...)` one to ensure that we check for the presence of a `{` brace first, then allow for standard expr matching.
 - tests...

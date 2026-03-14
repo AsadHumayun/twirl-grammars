@@ -2,26 +2,26 @@
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "twirl.html",
   "scopeName": "source.twirl",
-	"fileTypes": ["*.scala.html", ".scala.html"],
-	"foldingStartMarker": "^[^\\S\r\n]*@\\*[^\\S\r\n]*[^\\S\r\n]*.*$",
-	"foldingStopMarker": "^[\\s]*\\*@[^\\S\\r\\n]*$",
-	"repository": {
-		"comment-block-twirl": {
-			"name": "comment.block",
-			"begin": "@\\*",
-			"end": "\\*@"
-		},
-		"comment-line-twirl": {
-			"name": "comment.line",
-			"match": "\/\/\/*.*"
-		}
-	},
+  "fileTypes": ["*.scala.html", ".scala.html"],
+  "foldingStartMarker": "^[^\\S\r\n]*@\\*[^\\S\r\n]*[^\\S\r\n]*.*$",
+  "foldingStopMarker": "^[\\s]*\\*@[^\\S\\r\\n]*$",
+  "repository": {
+    "comment-block-twirl": {
+      "name": "comment.block",
+      "begin": "@\\*",
+      "end": "\\*@"
+    },
+    "comment-line-twirl": {
+      "name": "comment.line",
+      "match": "\/\/\/*.*"
+    }
+  },
   "patterns": [
-		{
-			"include": "#comment-block-twirl"
-		},
-		{
-			"include": "#comment-line-twirl"
-		}
+    {
+      "include": "#comment-block-twirl"
+    },
+    {
+      "include": "#comment-line-twirl"
+    }
   ]
 }

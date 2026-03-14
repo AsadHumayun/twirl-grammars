@@ -6,6 +6,21 @@
   "foldingStartMarker": "^[^\\S\r\n]*@\\*[^\\S\r\n]*[^\\S\r\n]*.*$",
   "foldingStopMarker": "^[\\s]*\\*@[^\\S\\r\\n]*$",
   "repository": {
+		"util-match-parens": {
+			"name": "meta.util.twirl.parens",
+			"begin": "\\(",
+			"end": "\\)",
+			"patterns": [
+				{ "include": "#util-match-parens" },
+				{ "include": "source.scala" }
+			]
+		},
+		"symbols-at": {
+			"name": "keyword.operator",
+			"match": "@"
+		},
+
+
     "comment-block-twirl": {
       "name": "comment.block",
       "begin": "@\\*",
@@ -14,14 +29,36 @@
     "comment-line-twirl": {
       "name": "comment.line",
       "match": "\/\/\/*.*"
-    }
+    },
+		"scala-line": {
+			"match": "@"
+		},
+
+		"scala-expr": {
+			"name": "meta.embedded.scala.source.expr",
+			"begin": "(@)\\(",
+			"end": "\\)",
+			"beginCaptures": {
+				"1": { "patterns": [{ "include": "#symbols-at" }] }
+			},
+			"patterns": [
+				{ "include": "#util-match-parens" },
+				{ "include": "source.scala" }
+			]
+		},
+		"scala-block": {
+
+		}
   },
   "patterns": [
-    {
-      "include": "#comment-block-twirl"
-    },
-    {
-      "include": "#comment-line-twirl"
-    }
+    { "include": "#comment-block-twirl" },
+    { "include": "#comment-line-twirl" },
+		{ "include": "#scala-expr" },
+		{ "include": "#symbols-at" },
+
+
+
+
+		{ "include": "text.basic.html" }
   ]
 }

@@ -4,7 +4,9 @@
 - make `@(...)` register `...` as scala source;
     - same as above but for `@{...}`;
     - same for `@expr` where `expr` is a single expression;
-	  - make it so `@obj.prop` matches `obj.prop` as a single unit for backspace etc;
+	  - make it so `@obj.prop` matches `obj.prop` as a single unit for backspace etc;\
+		- this should also work if someone tries to insert a block/expr inline eg `<head>@(scala.source)</head>`
 - tests...
-- do we make @ work in strings?
+- do we make @ work in strings? (current behaviour: it will get highlighted in strings...)
   - if not, then it must still work in s-strings/f-strings
+	- a rabbit hole I can jump into LATER.

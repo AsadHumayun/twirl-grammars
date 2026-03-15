@@ -42,7 +42,12 @@
 		"grammars": [{
 				"language": "twirl-html",
 				"scopeName": "source.twirl",
-				"path": "./syntaxes/twirl-html.tmLanguage.json"	
+				"path": "./syntaxes/twirl-html.tmLanguage.json"	,
+				"embeddedLanguages": {
+					"scala-inline": "scala",
+					"scala-line": "scala",
+					"scala-expr": "scala"
+				}
 		}]
 	}
 }

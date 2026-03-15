@@ -89,10 +89,11 @@
     },
     "scala-expr": {
       "name": "meta.embedded.scala.source.expr",
-      "begin": "(@)[\\w\\.]*\\(",
+      "begin": "(@)([\\w\\.]*)\\(",
       "end": "\\)",
       "beginCaptures": {
-        "1": { "patterns": [{ "include": "#symbols-at" }] }
+        "1": { "patterns": [{ "include": "#symbols-at" }] },
+				"2": { "patterns": [{ "include": "source.scala" }] }
       },
       "patterns": [
         { "include": "#util-match-parens" },

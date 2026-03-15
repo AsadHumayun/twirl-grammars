@@ -15,3 +15,4 @@
 - ~~HTML support is currently missing...~~
 - reserved keywords list
   - import, for, this, layout(maybe?)
+- known bug: mid-word embedding of Scala (eg `href="@href"`)

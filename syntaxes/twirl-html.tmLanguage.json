@@ -38,7 +38,7 @@
       },
       "patterns": [
 				{ "include": "#util-match-parens" },
-				{ "include": "#keyword-at" },
+				{ "include": "#symbols-at" },
 				{ "include": "source.scala" }
 			]
     },

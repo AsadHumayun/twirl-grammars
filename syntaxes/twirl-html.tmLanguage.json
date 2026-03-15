@@ -30,6 +30,19 @@
       "match": "\/\/\/*.*"
     },
 
+    "scala-line": {
+      "begin": "(@)",
+      "end": "\\n",
+      "beginCaptures": {
+        "1": { "patterns": [{ "include": "#symbols-at" }] }
+      },
+      "patterns": [
+				{ "include": "#util-match-parens" },
+				{ "include": "#keyword-at" },
+				{ "include": "source.scala" }
+			]
+    },
+
     "scala-expr": {
       "name": "meta.embedded.scala.source.expr",
       "begin": "(@)[\\w\\.]*\\(",
@@ -43,20 +56,17 @@
       ]
     },
 
-    "scala-line": {
-      "begin": "(@)",
-      "end": "\\n",
-      "beginCaptures": {
-        "1": { "patterns": [{ "include": "#symbols-at" }] }
-      },
-      "patterns": [{ "include": "#keyword-at" }, { "include": "source.scala" }]
-    }
+		"escape-at": {
+			"name": "string",
+			"match": "@@"
+		}
   },
   "patterns": [
+		{ "include": "#escape-at" },
     { "include": "#comment-block-twirl" },
     { "include": "#comment-line-twirl" },
-    { "include": "#scala-expr" },
     { "include": "#scala-line" },
+    { "include": "#scala-expr" },
     { "include": "#symbols-at" },
 
     { "include": "text.html.derivative" }

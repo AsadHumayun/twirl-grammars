@@ -1,13 +1,13 @@
 ## Grammar
-- do not match `@@` in the @ rule (escaping @ symbol)
-- match all of the Scala keywords (import, if, else, match, case, this, etc)
-- make `@(...)` register `...` as scala source;
-    - same as above but for `@{...}`;
-    - same for `@expr` where `expr` is a single expression;
+- ~~do not match `@@` in the @ rule (escaping @ symbol)~~ (note: currently renders in the same colour as a string - is this a good idea? it seemed better than doing a comment since that could be misleading)
+- ~~match all of the Scala keywords (import, if, else, match, case, this, etc)~~
+- ~~make `@(...)` register `...` as scala source;~~
+    - ~~same as above but for `@{...}`;~~
+    - ~~same for `@expr` where `expr` is a single expression;~~
 	  - make it so `@obj.prop` matches `obj.prop` as a single unit for backspace etc;\
-		- currently fails on presence of implicit params; it should accept any number of following whole parens
+		- ~~currently fails on presence of implicit params; it should accept any number of following whole parens~~
 		- this should also work if someone tries to insert a block/expr inline eg `<head>@(scala.source)</head>`
-		- currently, if we have `@(...) {...1}` and `...1}` spans multiple lines, then the grammar will not match all of these in the source.scala scope. This is not the desired behaviour - we might need to put another regex on top of the current `@(...)` one to ensure that we check for the presence of a `{` brace first, then allow for standard expr matching.
+		- ~~currently, if we have `@(...) {...1}` and `...1}` spans multiple lines, then the grammar will not match all of these in the source.scala scope. This is not the desired behaviour - we might need to put another regex on top of the current `@(...)` one to ensure that we check for the presence of a `{` brace first, then allow for standard expr matching.~~ (turns out the underlying Scala syntax that I reference overrides this and uses its own techniques to handle multilines for me... both a good and a bad thing for this bleed to be happening)
 - tests...
 - do we make @ work in strings? (current behaviour: it will get highlighted in strings...)
   - if not, then it must still work in s-strings/f-strings
@@ -16,3 +16,4 @@
 - reserved keywords list
   - import, for, this, layout(maybe?)
 - known bug: mid-word embedding of Scala (eg `href="@href"`)
+- @* ... *@ as single line comments are not marked as comments

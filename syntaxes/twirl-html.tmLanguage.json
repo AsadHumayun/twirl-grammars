@@ -93,16 +93,21 @@
       "end": "\\)",
       "beginCaptures": {
         "1": { "patterns": [{ "include": "#symbols-at" }] },
-				"2": { "patterns": [{ "include": "source.scala" }] }
+				"2": { "patterns": [{ "include": "#keyword-this" }, { "include": "source.scala" }] }
       },
       "patterns": [
         { "include": "#util-match-parens" },
+				{ "include": "#keyword-this" },
         { "include": "source.scala" }
       ]
     },
 		"escape-at": {
 			"name": "string",
 			"match": "@@"
+		},
+		"keyword-this": {
+			"name": "keyword",
+			"match": "\\b(this)\\b"
 		}
   },
   "patterns": [
@@ -114,7 +119,6 @@
 		{ "include": "#scala-inline" },
 		{ "include": "#scala-line-curly" },
     { "include": "#symbols-at" },
-		
     { "include": "text.html.derivative" }
   ]
 }

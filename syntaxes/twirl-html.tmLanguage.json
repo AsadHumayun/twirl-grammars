@@ -15,6 +15,16 @@
         { "include": "source.scala" }
       ]
     },
+    "util-match-curly": {
+      "name": "meta.util.twirl.parens",
+      "begin": "\\(",
+      "end": "\\)",
+      "patterns": [
+        { "include": "#util-match-curly" },
+        { "include": "source.scala" }
+      ]
+    },
+
     "symbols-at": {
       "name": "keyword.operator",
       "match": "@"
@@ -41,6 +51,19 @@
 				{ "include": "#symbols-at" },
 				{ "include": "source.scala" }
 			]
+    },
+
+    "scala-block": {
+      "name": "meta.embedded.scala.source.block",
+      "begin": "(@)[\\w\\.]*\\{",
+      "end": "\\}",
+      "beginCaptures": {
+        "1": { "patterns": [{ "include": "#symbols-at" }] }
+      },
+      "patterns": [
+        { "include": "#util-match-curly" },
+        { "include": "source.scala" }
+      ]
     },
 
     "scala-expr": {

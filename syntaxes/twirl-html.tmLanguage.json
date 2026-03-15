@@ -16,20 +16,18 @@
       ]
     },
     "util-match-curly": {
-      "name": "meta.util.twirl.parens",
+      "name": "meta.util.twirl.curly",
       "begin": "\\(",
       "end": "\\)",
       "patterns": [
         { "include": "#util-match-curly" },
-        { "include": "source.scala" }
+        { "include": "$self" }
       ]
     },
-
     "symbols-at": {
       "name": "keyword.operator",
       "match": "@"
     },
-
     "comment-block-twirl": {
       "name": "comment.block",
       "begin": "@\\*",
@@ -39,20 +37,44 @@
       "name": "comment.line",
       "match": "\/\/\/*.*"
     },
-
+		"scala-inline": {
+			"applyEndPatternLast": 1,
+			"begin": "(@)",
+			"end": "(?=[\\n\\r;!#%&*+\\-<@>\/?\\^|~£§])",
+			"beginCaptures": {
+				"1": { "patterns": [{ "include": "#symbols-at" }] },
+				"2": { "patterns": [{ "include": "#comment-block-twirl" }] }
+			},
+			"patterns": [
+				{ "include": "#util-match-parens" },
+				{ "include": "#comment-block-twirl" },
+				{ "include": "source.scala" }
+			]
+		},
     "scala-line": {
-      "begin": "(@)",
-      "end": "\\n",
+      "begin": "(@)[\\w\\.]*\\(",
+      "end": "$",
       "beginCaptures": {
         "1": { "patterns": [{ "include": "#symbols-at" }] }
       },
       "patterns": [
 				{ "include": "#util-match-parens" },
 				{ "include": "#symbols-at" },
+				{ "include": "#comment-block-twirl" },
 				{ "include": "source.scala" }
 			]
     },
-
+    "scala-line-curly": {
+      "begin": "(@)[^\\S\r\n]*\\{$",
+      "end": "(?=[\\n ;!#%&*+\\-<@>\/?\\^|~£§])",
+      "beginCaptures": {
+        "1": { "patterns": [{ "include": "#symbols-at" }] }
+      },
+      "patterns": [
+				{ "include": "#util-match-curly" },
+				{ "include": "$self" }
+			]
+    },
     "scala-block": {
       "name": "meta.embedded.scala.source.block",
       "begin": "(@)[\\w\\.]*\\{",
@@ -62,10 +84,9 @@
       },
       "patterns": [
         { "include": "#util-match-curly" },
-        { "include": "source.scala" }
+				{ "include": "$self" }
       ]
     },
-
     "scala-expr": {
       "name": "meta.embedded.scala.source.expr",
       "begin": "(@)[\\w\\.]*\\(",
@@ -78,7 +99,6 @@
         { "include": "source.scala" }
       ]
     },
-
 		"escape-at": {
 			"name": "string",
 			"match": "@@"
@@ -86,12 +106,14 @@
   },
   "patterns": [
 		{ "include": "#escape-at" },
-    { "include": "#comment-block-twirl" },
     { "include": "#comment-line-twirl" },
-    { "include": "#scala-line" },
+    { "include": "#comment-block-twirl" },
     { "include": "#scala-expr" },
+    { "include": "#scala-line" },
+		{ "include": "#scala-inline" },
+		{ "include": "#scala-line-curly" },
     { "include": "#symbols-at" },
-
+		
     { "include": "text.html.derivative" }
   ]
 }

@@ -39,7 +39,7 @@
     },
 
     "scala-template-header": {
-      "match": "(@)(\\([^\\)\\n\\r]*\\)[ ]*\\([^\\)\\n\\r]*\\))",
+      "match": "(@)([^\\)\\n\\r]*\\([^\\)\\n\\r]*\\)[ ]*\\([^\\)\\n\\r]*\\)[ ]*)",
       "comment": "Matches the opening template header parameters up to 2 bracket pairs (eg match: @(a: T)(implicit b: T) )",
       "captures": {
         "1": { "patterns": [{ "include": "#symbols-at" }] },

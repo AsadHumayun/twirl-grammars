@@ -47,12 +47,10 @@
       }
     },
 		"scala-inline": {
-			"applyEndPatternLast": 1,
-			"begin": "(@)",
-			"end": "(?=[\\n\\r;!#%&*+\\-<@>\/?\\^|~£§])",
-			"beginCaptures": {
+      "match": "(@)([^\\n\\r;!#%&*+\\-<@>\/?\\^|~£§]*)",
+			"captures": {
 				"1": { "patterns": [{ "include": "#symbols-at" }] },
-				"2": { "patterns": [{ "include": "#comment-block-twirl" }] }
+				"2": { "name": "keyword" }
 			},
 			"patterns": [
 				{ "include": "#util-match-parens" },
@@ -74,6 +72,7 @@
 			]
     },
     "scala-line-curly": {
+      "name": "meta.embedded.scala.curly",
       "begin": "(@)[^\\S\r\n]*\\{$",
       "end": "(?=[\\n ;!#%&*+\\-<@>\/?\\^|~£§])",
       "beginCaptures": {

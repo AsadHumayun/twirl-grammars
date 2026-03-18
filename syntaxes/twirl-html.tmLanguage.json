@@ -113,6 +113,15 @@
         { "include": "source.scala" }
       ]
     },
+    "scala-importStatement": {
+      "name": "meta.embedded.scala.source.importStatementLine",
+      "match": "(@)[ ]*(import [^@*\\n\\r]*)(.*)",
+      "captures": {
+        "1": { "patterns": [{ "include": "#symbols-at" }] },
+        "2": { "patterns": [{ "include": "source.scala" }] },
+        "3": { "patterns": [{ "include": "#comment-block-twirl" }] }
+      }
+    },
 		"escape-at": {
 			"name": "string",
 			"match": "@@"
@@ -130,6 +139,7 @@
     { "include": "#scala-block" },
     { "include": "#scala-expr" },
     { "include": "#scala-line" },
+    { "include": "#scala-importStatement" },
 		{ "include": "#scala-inline" },
 		{ "include": "#scala-line-curly" },
     { "include": "#symbols-at" },

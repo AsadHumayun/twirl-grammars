@@ -39,8 +39,9 @@
     },
 
     "scala-explicit-implicits": {
+      "name": "meta.embedded.scala.explicitImplicits",
       "match": "(@)([^\\)\\n\\r]*\\([^\\)\\n\\r]*\\)[ ]*\\([^\\)\\n\\r]*\\)[ ]*)",
-      "comment": "Matches the opening template header parameters up to 2 bracket pairs (eg match: @(a: T)(implicit b: T) )",
+      "comment": "Matches implicit values provided to any method.",
       "captures": {
         "1": { "patterns": [{ "include": "#symbols-at" }] },
         "2": { "patterns": [{ "include": "source.scala" }] }
@@ -59,6 +60,7 @@
 			]
 		},
     "scala-line": {
+      "name": "meta.embedded.scala.scalaLine",
       "begin": "(@)[\\w\\.]*\\(",
       "end": "$",
       "beginCaptures": {
@@ -92,7 +94,7 @@
       },
       "patterns": [
         { "include": "#util-match-curly" },
-				{ "include": "$self" }
+				{ "include": "source.scala" }
       ]
     },
     "scala-expr": {

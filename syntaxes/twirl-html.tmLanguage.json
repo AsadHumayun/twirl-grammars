@@ -17,8 +17,8 @@
     },
     "util-match-curly": {
       "name": "meta.util.twirl.curly",
-      "begin": "\\(",
-      "end": "\\)",
+      "begin": "\\{",
+      "end": "\\}",
       "patterns": [
         { "include": "#util-match-curly" },
         { "include": "$self" }

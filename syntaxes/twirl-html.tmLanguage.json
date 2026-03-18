@@ -47,18 +47,20 @@
         "2": { "patterns": [{ "include": "source.scala" }] }
       }
     },
-		"scala-inline": {
-      "match": "(@)([^\\n\\r;!#%&*+\\-<@>\/?\\^|~£§]*)",
-			"captures": {
-				"1": { "patterns": [{ "include": "#symbols-at" }] },
-				"2": { "name": "keyword" }
-			},
-			"patterns": [
-				{ "include": "#util-match-parens" },
-				{ "include": "#comment-block-twirl" },
-				{ "include": "source.scala" }
-			]
-		},
+    "scala-inline": {
+      "name": "meta.embedded.scala.inlineScala",
+      "applyEndPatternLast": 1,
+      "begin": "(@)([\\w\\.]*)",
+      "end": "(?=[\\n\\r;!#%&*+\\-<@>\/?\\^|~£§])",
+      "beginCaptures": {
+        "1": { "patterns": [{ "include": "#symbols-at" }] },
+        "2": { "name": "keyword.control.twirl.m" }
+      },
+      "patterns": [
+        { "include": "#comment-block-twirl" },
+        { "include": "source.scala" }
+      ]
+    },
     "scala-line": {
       "name": "meta.embedded.scala.scalaLine",
       "begin": "(@)[\\w\\.]*\\(",
@@ -125,6 +127,7 @@
     { "include": "#comment-line-twirl" },
     { "include": "#comment-block-twirl" },
     { "include": "#scala-explicit-implicits" },
+    { "include": "#scala-block" },
     { "include": "#scala-expr" },
     { "include": "#scala-line" },
 		{ "include": "#scala-inline" },

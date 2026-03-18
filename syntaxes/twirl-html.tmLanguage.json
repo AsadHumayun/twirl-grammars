@@ -38,7 +38,7 @@
       "match": "\/\/\/*.*"
     },
 
-    "scala-template-header": {
+    "scala-explicit-implicits": {
       "match": "(@)([^\\)\\n\\r]*\\([^\\)\\n\\r]*\\)[ ]*\\([^\\)\\n\\r]*\\)[ ]*)",
       "comment": "Matches the opening template header parameters up to 2 bracket pairs (eg match: @(a: T)(implicit b: T) )",
       "captures": {
@@ -123,7 +123,7 @@
     { "include": "#escape-at" },
     { "include": "#comment-line-twirl" },
     { "include": "#comment-block-twirl" },
-    { "include": "#scala-template-header" },
+    { "include": "#scala-explicit-implicits" },
     { "include": "#scala-expr" },
     { "include": "#scala-line" },
 		{ "include": "#scala-inline" },

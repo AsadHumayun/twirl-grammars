@@ -37,6 +37,15 @@
       "name": "comment.line",
       "match": "\/\/\/*.*"
     },
+
+    "scala-template-header": {
+      "match": "(@)(\\([^\\)\\n\\r]*\\)[ ]*\\([^\\)\\n\\r]*\\))",
+      "comment": "Matches the opening template header parameters up to 2 bracket pairs (eg match: @(a: T)(implicit b: T) )",
+      "captures": {
+        "1": { "patterns": [{ "include": "#symbols-at" }] },
+        "2": { "patterns": [{ "include": "source.scala" }] }
+      }
+    },
 		"scala-inline": {
 			"applyEndPatternLast": 1,
 			"begin": "(@)",
@@ -111,9 +120,10 @@
 		}
   },
   "patterns": [
-		{ "include": "#escape-at" },
+    { "include": "#escape-at" },
     { "include": "#comment-line-twirl" },
     { "include": "#comment-block-twirl" },
+    { "include": "#scala-template-header" },
     { "include": "#scala-expr" },
     { "include": "#scala-line" },
 		{ "include": "#scala-inline" },

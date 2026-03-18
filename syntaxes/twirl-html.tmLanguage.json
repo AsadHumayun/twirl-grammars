@@ -64,7 +64,7 @@
     "scala-line": {
       "name": "meta.embedded.scala.scalaLine",
       "begin": "(@)[\\w\\.]*\\(",
-      "end": "$",
+      "end": "\\)",
       "beginCaptures": {
         "1": { "patterns": [{ "include": "#symbols-at" }] }
       },
@@ -122,6 +122,26 @@
         "3": { "patterns": [{ "include": "#comment-block-twirl" }] }
       }
     },
+
+    "util-match-curly-template-block": {
+      "name": "meta.embedded.util.matchCurlyTemplateBlock",
+      "begin": "\\{",
+      "end": "\\}",
+      "patterns": [{ "include": "$self" }]
+    },
+    "scala-template-block": {
+      "name": "meta.embedded.twirl.source.templateBlock",
+      "begin": "(@)([\\w\\.]*)\\s*\\=\\s*\\{",
+      "end": "\\}",
+      "beginCaptures": {
+        "1": { "patterns": [{ "include": "#symbols-at" }] },
+        "2": { "patterns": [{ "name": "keyword.control" }] }
+      },
+      "patterns": [
+        { "include": "#util-match-curly-template-block" },
+        { "include": "$self" }
+      ]
+    },
 		"escape-at": {
 			"name": "string",
 			"match": "@@"
@@ -136,6 +156,7 @@
     { "include": "#comment-line-twirl" },
     { "include": "#comment-block-twirl" },
     { "include": "#scala-explicit-implicits" },
+    { "include": "#scala-template-block" },
     { "include": "#scala-block" },
     { "include": "#scala-expr" },
     { "include": "#scala-line" },

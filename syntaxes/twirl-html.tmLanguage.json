@@ -25,7 +25,7 @@
       ]
     },
     "symbols-at": {
-      "name": "keyword.operator",
+      "name": "keyword.interpolation.scala",
       "match": "@"
     },
     "comment-block-twirl": {

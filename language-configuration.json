@@ -1,7 +1,7 @@
 {
 	/**
-	 * for future devs working on this, docs are at
-	 https://code.visualstudio.com/api/language-extensions/language-configuration-guide
+	 * future me, docs are at
+	 * https://code.visualstudio.com/api/language-extensions/language-configuration-guide
 	 */
 
   "comments": {
@@ -57,9 +57,9 @@
 				"indent": "none",
 				// then do not append " * " to indicate another comment line
 			}
-		},		
+		},
 		{
-			"beforeText": "^@\\*.*$", // match the start of a Twirl block comment
+			"beforeText": "^@\\*(?!.*\\*@)[^@\\*]*", // match the start of a Twirl block comment
 			"action": {
 				"indent": "none",
 				"appendText": " * " // then add another comment to the next line
@@ -77,6 +77,7 @@
 	"colorizedBracketPairs": [
 		["(", ")"],
 		["[", "]"],
-		["{", "}"]
+		["{", "}"],
+    ["<", ">"]
 	]
 }

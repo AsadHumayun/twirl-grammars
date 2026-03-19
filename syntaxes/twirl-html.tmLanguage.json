@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "twirl.html",
   "scopeName": "source.twirl",
-  "fileTypes": ["*.scala.html", ".scala.html"],
+  "fileTypes": ["*.scala.html"],
   "foldingStartMarker": "^[^\\S\r\n]*@\\*[^\\S\r\n]*[^\\S\r\n]*.*$",
   "foldingStopMarker": "^[\\s]*\\*@[^\\S\\r\\n]*$",
   "repository": {

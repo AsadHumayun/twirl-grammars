@@ -67,12 +67,26 @@
 		},
 		{
 			"previousLineText": "^@\\*[^]*$", // matches the start of a Twirl block comment with anything following it
-			"beforeText": "^[\\s]*\\*[^*@]*$", // matches " * comment" but not " * comment *@"
+			"beforeText": "^.*$", // matches " * comment" but not " * comment *@"
 			"action": {
 				"indent": "none",
 				"appendText": "* " // then append another comment
 			}
-		}
+		},
+    // This rule was meant to auto-add additional * lines for when a user is inside a
+    // like this:
+    // @**
+    //   * comments
+    //   * the "* " was added
+    //  *@
+    // twirl comment block, but adding this would cause for every other line to be matched as a comment 
+    {
+      "beforeText": "^ *\\*[^\\n\\r\\*@]*$",
+      "action": {
+        "appendText": "* ",
+        "indent": "none"
+      }
+    }
 	],
 	"colorizedBracketPairs": [
 		["(", ")"],

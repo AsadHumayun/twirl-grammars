@@ -38,8 +38,6 @@ will be additions of Twirl JS and Twirl XML as these aren't really popular enoug
 There is a chance that this may be done at some point in the future, but this is not
 something that will be supported as the v1 draft.
 
-- inline `@* comment *@` on @import lines will get consumed by `source.scala` and will
-	be erroneously reported as Scala source. This is not the case.
 - any inline `@...` Scala code will be missed inside HTML tags. The
   alternative here was to effectively re-implement the HTML grammar
 	to also match the patterns introduced in this grammar. Eg `<div class="g" @t>`,

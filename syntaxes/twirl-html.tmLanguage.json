@@ -2,8 +2,8 @@
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "twirl.html",
   "scopeName": "source.twirl",
-  "fileTypes": ["*.scala.html"],
-  "foldingStartMarker": "^[^\\S\r\n]*@\\*[^\\S\r\n]*[^\\S\r\n]*.*$",
+  "fileTypes": ["scala.html"],
+  "foldingStartMarker": "^[^\\S\\r\\n]*@\\*[^\\S\\r\\n]*[^\\S\\r\\n]*.*$",
   "foldingStopMarker": "^[\\s]*\\*@[^\\S\\r\\n]*$",
   "repository": {
     "util-match-parens": {
@@ -127,7 +127,10 @@
       "name": "meta.embedded.util.matchCurlyTemplateBlock",
       "begin": "\\{",
       "end": "\\}",
-      "patterns": [{ "include": "$self" }]
+      "patterns": [
+				{ "include": "#twirl-in-html" },
+				{ "include": "$self" }
+			]
     },
     "scala-template-block": {
       "name": "meta.embedded.twirl.source.templateBlock",
@@ -142,6 +145,19 @@
         { "include": "$self" }
       ]
     },
+		"#html-inline-attr": {
+			"name": "meta.embedded.twirl.htmlAttr",
+			"match": ""
+		},
+		"twirl-in-html": {
+			"name": "meta.embedded.twirl.inlineTwirl",
+			"begin": "<",
+			"end": ">",
+			"patterns": [
+				{ "include": "$self" },
+				{ "include": "#html-inline-attr" }
+			]
+		},
 		"escape-at": {
 			"name": "string",
 			"match": "@@"
@@ -155,6 +171,7 @@
     { "include": "#escape-at" },
     { "include": "#comment-line-twirl" },
     { "include": "#comment-block-twirl" },
+		{ "include": "#twirl-in-html" },
     { "include": "#scala-explicit-implicits" },
     { "include": "#scala-template-block" },
     { "include": "#scala-block" },

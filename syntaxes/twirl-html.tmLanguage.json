@@ -69,11 +69,11 @@
         "1": { "patterns": [{ "include": "#symbols-at" }] }
       },
       "patterns": [
-				{ "include": "#util-match-parens" },
-				{ "include": "#symbols-at" },
-				{ "include": "#comment-block-twirl" },
-				{ "include": "source.scala" }
-			]
+        { "include": "#util-match-parens" },
+        { "include": "#symbols-at" },
+        { "include": "#comment-block-twirl" },
+        { "include": "source.scala" }
+      ]
     },
     "scala-line-curly": {
       "name": "meta.embedded.scala.curly",
@@ -83,9 +83,9 @@
         "1": { "patterns": [{ "include": "#symbols-at" }] }
       },
       "patterns": [
-				{ "include": "#util-match-curly" },
-				{ "include": "$self" }
-			]
+        { "include": "#util-match-curly" },
+        { "include": "$self" }
+      ]
     },
     "scala-block": {
       "name": "meta.embedded.scala.source.block",
@@ -96,7 +96,7 @@
       },
       "patterns": [
         { "include": "#util-match-curly" },
-				{ "include": "source.scala" }
+        { "include": "source.scala" }
       ]
     },
     "scala-expr": {
@@ -105,11 +105,11 @@
       "end": "\\)",
       "beginCaptures": {
         "1": { "patterns": [{ "include": "#symbols-at" }] },
-				"2": { "patterns": [{ "include": "#keyword-this" }, { "include": "source.scala" }] }
+        "2": { "patterns": [{ "include": "#keyword-this" }, { "include": "source.scala" }] }
       },
       "patterns": [
         { "include": "#util-match-parens" },
-				{ "include": "#keyword-this" },
+        { "include": "#keyword-this" },
         { "include": "source.scala" }
       ]
     },
@@ -128,9 +128,9 @@
       "begin": "\\{",
       "end": "\\}",
       "patterns": [
-				{ "include": "#twirl-in-html" },
-				{ "include": "$self" }
-			]
+        { "include": "#twirl-in-html" },
+        { "include": "$self" }
+      ]
     },
     "scala-template-block": {
       "name": "meta.embedded.twirl.source.templateBlock",
@@ -171,14 +171,14 @@
         { "include": "source.scala" }
       ]
     },
-		"escape-at": {
-			"name": "string",
-			"match": "@@"
-		},
-		"keyword-this": {
-			"name": "keyword",
-			"match": "\\b(this)\\b"
-		}
+    "escape-at": {
+      "name": "string",
+      "match": "@@"
+    },
+    "keyword-this": {
+      "name": "keyword",
+      "match": "\\b(this)\\b"
+    }
   },
   "patterns": [
     { "include": "#escape-at" },
@@ -191,8 +191,8 @@
     { "include": "#scala-expr" },
     { "include": "#scala-line" },
     { "include": "#scala-importStatement" },
-		{ "include": "#scala-inline" },
-		{ "include": "#scala-line-curly" },
+    { "include": "#scala-inline" },
+    { "include": "#scala-line-curly" },
     { "include": "#symbols-at" },
     { "include": "text.html.derivative" }
   ]

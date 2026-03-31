@@ -160,11 +160,16 @@
 		},
     "twirl-template-params": {
       "name": "meta.embedded.twirl.templateHeader.parameters.ident",
-      "match": "(@)([\\s]*[(][^)]*\\))(\\g<2>*)",
-      "captures": {
+      "begin": "(@)([\\s]*[(][^)]*\\))(\\g<2>*)",
+      "end": "(?:[\\s]*)[)]([\\s]*[(][^)]*[)])*",
+      "beginCaptures": {
         "1": { "patterns": [{ "include": "#keyword-at" }] },
         "0": { "patterns": [{ "include": "source.scala" }] }
-      }
+      },
+      "endCaptures": { "0": { "patterns": [{ "include": "source.scala" }] } },
+      "patterns": [
+        { "include": "source.scala" }
+      ]
     },
 		"escape-at": {
 			"name": "string",

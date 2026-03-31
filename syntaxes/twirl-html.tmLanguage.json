@@ -158,6 +158,14 @@
 				{ "include": "#html-inline-attr" }
 			]
 		},
+    "twirl-template-params": {
+      "name": "meta.embedded.twirl.templateHeader.parameters.ident",
+      "match": "(@)([\\s]*[(][^)]*\\))(\\g<2>*)",
+      "captures": {
+        "1": { "patterns": [{ "include": "#keyword-at" }] },
+        "0": { "patterns": [{ "include": "source.scala" }] }
+      }
+    },
 		"escape-at": {
 			"name": "string",
 			"match": "@@"
@@ -171,7 +179,7 @@
     { "include": "#escape-at" },
     { "include": "#comment-line-twirl" },
     { "include": "#comment-block-twirl" },
-		{ "include": "#twirl-in-html" },
+    { "include": "#twirl-template-params" },
     { "include": "#scala-explicit-implicits" },
     { "include": "#scala-template-block" },
     { "include": "#scala-block" },

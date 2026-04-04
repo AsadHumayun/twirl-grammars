@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-  "name": "twirl.html",
+  "name": "Twirl HTML",
   "scopeName": "source.twirl",
   "fileTypes": ["scala.html"],
   "foldingStartMarker": "^[^\\S\\r\\n]*@\\*[^\\S\\r\\n]*[^\\S\\r\\n]*.*$",
@@ -19,10 +19,7 @@
       "name": "meta.util.twirl.curly",
       "begin": "\\{",
       "end": "\\}",
-      "patterns": [
-        { "include": "#util-match-curly" },
-        { "include": "$self" }
-      ]
+      "patterns": [{ "include": "#util-match-curly" }, { "include": "$self" }]
     },
     "symbols-at": {
       "name": "keyword.interpolation.scala",
@@ -82,10 +79,7 @@
       "beginCaptures": {
         "1": { "patterns": [{ "include": "#symbols-at" }] }
       },
-      "patterns": [
-        { "include": "#util-match-curly" },
-        { "include": "$self" }
-      ]
+      "patterns": [{ "include": "#util-match-curly" }, { "include": "$self" }]
     },
     "scala-block": {
       "name": "meta.embedded.scala.source.block",
@@ -105,7 +99,12 @@
       "end": "\\)",
       "beginCaptures": {
         "1": { "patterns": [{ "include": "#symbols-at" }] },
-        "2": { "patterns": [{ "include": "#keyword-this" }, { "include": "source.scala" }] }
+        "2": {
+          "patterns": [
+            { "include": "#keyword-this" },
+            { "include": "source.scala" }
+          ]
+        }
       },
       "patterns": [
         { "include": "#util-match-parens" },
@@ -127,10 +126,7 @@
       "name": "meta.embedded.util.matchCurlyTemplateBlock",
       "begin": "\\{",
       "end": "\\}",
-      "patterns": [
-        { "include": "#twirl-in-html" },
-        { "include": "$self" }
-      ]
+      "patterns": [{ "include": "#twirl-in-html" }, { "include": "$self" }]
     },
     "scala-template-block": {
       "name": "meta.embedded.twirl.source.templateBlock",
@@ -145,27 +141,22 @@
         { "include": "$self" }
       ]
     },
-		"twirl-in-html": {
-			"name": "meta.embedded.twirl.inlineTwirl",
-			"begin": "<",
-			"end": ">",
-			"patterns": [
-				{ "include": "$self" },
-				{ "include": "#html-inline-attr" }
-			]
-		},
+    "twirl-in-html": {
+      "name": "meta.embedded.twirl.inlineTwirl",
+      "begin": "<",
+      "end": ">",
+      "patterns": [{ "include": "$self" }, { "include": "#html-inline-attr" }]
+    },
     "twirl-template-params": {
       "name": "meta.embedded.twirl.templateHeader.parameters.ident",
-      "begin": "(@)([\\s]+[(][^)]*\\))(\\g<2>*)",
+      "begin": "(@)([\\s]*[(][^)]*\\))(\\g<2>*)",
       "end": "(?:[\\s]*)[)]([\\s]*[(][^)]*[)])*",
       "beginCaptures": {
-        "1": { "patterns": [{ "include": "#keyword-at" }] },
+        "1": { "patterns": [{ "include": "#symbols-at" }] },
         "0": { "patterns": [{ "include": "source.scala" }] }
       },
       "endCaptures": { "0": { "patterns": [{ "include": "source.scala" }] } },
-      "patterns": [
-        { "include": "source.scala" }
-      ]
+      "patterns": [{ "include": "source.scala" }]
     },
     "escape-at": {
       "name": "string",

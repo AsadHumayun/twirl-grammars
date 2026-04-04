@@ -145,10 +145,6 @@
         { "include": "$self" }
       ]
     },
-		"#html-inline-attr": {
-			"name": "meta.embedded.twirl.htmlAttr",
-			"match": ""
-		},
 		"twirl-in-html": {
 			"name": "meta.embedded.twirl.inlineTwirl",
 			"begin": "<",
@@ -160,7 +156,7 @@
 		},
     "twirl-template-params": {
       "name": "meta.embedded.twirl.templateHeader.parameters.ident",
-      "begin": "(@)([\\s]*[(][^)]*\\))(\\g<2>*)",
+      "begin": "(@)([\\s]+[(][^)]*\\))(\\g<2>*)",
       "end": "(?:[\\s]*)[)]([\\s]*[(][^)]*[)])*",
       "beginCaptures": {
         "1": { "patterns": [{ "include": "#keyword-at" }] },

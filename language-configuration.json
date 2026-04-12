@@ -1,14 +1,9 @@
 {
-	/**
-	 * future me, docs are at
-	 * https://code.visualstudio.com/api/language-extensions/language-configuration-guide
-	 */
-
   "comments": {
     "lineComment": {
-			"comment": "//",
-			"noIndent": false
-		},
+      "comment": "//",
+      "noIndent": false
+    },
     "blockComment": ["@*", "*@"]
   },
   "brackets": [
@@ -39,47 +34,47 @@
     "markers": {
       "start": "^[^\\S\r\n]*@\\*[^\\S\r\n]*[^\\S\r\n]*.*$",
       "end": "^[\\s]*\\*@[^\\S\\r\\n]*$"
-    },
+    }
   },
   "wordPattern": "(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\-\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)",
   "indentationRules": {
     "increaseIndentPattern": "^((?!\\/\\/).)*(\\{[^}\"'`]*|\\([^)\"'`]*|\\[[^\\]\"'`]*)$",
     "decreaseIndentPattern": "^((?!.*?\\/\\*).*\\*/)?\\s*[\\)\\}\\]].*$"
   },
-	"onEnterRules": [
-		/* Used to help provide support for block comments */
-		{
-			// if the previous line is a comment AND ends with "*@" (indicating the end of a block comment)
-			"previousLineText": "^[\\s]*\\*[^*@]*$",
-			"beforeText": "^[\\s]*\\*[^*@]*$",
-			"afterText": "^.*\\*\\@$",
-			"action": {
-				"indent": "none",
-				// then do not append " * " to indicate another comment line
-			}
-		},
-		{
-			"beforeText": "^@\\*(?!.*\\*@)[^@\\*]*", // match the start of a Twirl block comment
-			"action": {
-				"indent": "none",
-				"appendText": " * " // then add another comment to the next line
-			},
-		},
-		{
-			"previousLineText": "^@\\*[^]*$", // matches the start of a Twirl block comment with anything following it
-			"beforeText": "^.*$", // matches " * comment" but not " * comment *@"
-			"action": {
-				"indent": "none",
-				"appendText": "* " // then append another comment
-			}
-		},
+  "onEnterRules": [
+    /* Used to help provide support for block comments */
+    {
+      // if the previous line is a comment AND ends with "*@" (indicating the end of a block comment)
+      "previousLineText": "^[\\s]*\\*[^*@]*$",
+      "beforeText": "^[\\s]*\\*[^*@]*$",
+      "afterText": "^.*\\*\\@$",
+      "action": {
+        "indent": "none"
+        // then do not append " * " to indicate another comment line
+      }
+    },
+    {
+      "beforeText": "^@\\*(?!.*\\*@)[^@\\*]*", // match the start of a Twirl block comment
+      "action": {
+        "indent": "none",
+        "appendText": " * " // then add another comment to the next line
+      }
+    },
+    {
+      "previousLineText": "^@\\*[^]*$", // matches the start of a Twirl block comment with anything following it
+      "beforeText": "^.*$", // matches " * comment" but not " * comment *@"
+      "action": {
+        "indent": "none",
+        "appendText": "* " // then append another comment
+      }
+    },
     // This rule was meant to auto-add additional * lines for when a user is inside a
     // like this:
     // @**
     //   * comments
     //   * the "* " was added
     //  *@
-    // twirl comment block, but adding this would cause for every other line to be matched as a comment 
+    // twirl comment block, but adding this would cause for every other line to be matched as a comment
     {
       "beforeText": "^ *\\*[^\\n\\r\\*@]*$",
       "action": {
@@ -87,11 +82,11 @@
         "indent": "none"
       }
     }
-	],
-	"colorizedBracketPairs": [
-		["(", ")"],
-		["[", "]"],
-		["{", "}"],
+  ],
+  "colorizedBracketPairs": [
+    ["(", ")"],
+    ["[", "]"],
+    ["{", "}"],
     ["<", ">"]
-	]
+  ]
 }

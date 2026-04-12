@@ -8,6 +8,7 @@
   "repository": {
     "util-match-parens": {
       "name": "meta.util.twirl.parens",
+      "comment": "A utility pattern to match everything inside a set of braces, including nested braces )(, as Scala source.",
       "begin": "\\(",
       "end": "\\)",
       "patterns": [
@@ -17,16 +18,19 @@
     },
     "util-match-curly": {
       "name": "meta.util.twirl.curly",
+      "comment": "A utility pattern to match everything inside a set of curly braces }{ as HTML-first source and then further nested @ScalaExpr expressions.",
       "begin": "\\{",
       "end": "\\}",
       "patterns": [{ "include": "#util-match-curly" }, { "include": "$self" }]
     },
     "symbols-at": {
       "name": "keyword.interpolation.scala",
+      "comment": "Applies colouring to the magic Twirl character @.",
       "match": "@"
     },
     "comment-block-twirl": {
       "name": "comment.block",
+      "comment": "A block comment @**@.",
       "begin": "@\\*",
       "end": "\\*@"
     },
@@ -49,6 +53,7 @@
       "applyEndPatternLast": 1,
       "begin": "(@)([\\w\\.]*)",
       "end": "(?=[\\n\\r;!#%&*+\\-<@>\/?\\^|~£§])",
+      "comment": "Tries its best to match inline Scala code, starting with @ and ending at some characters where it's not possible to define something by in the Scala program (and is therefore definitely just a normal string)",
       "beginCaptures": {
         "1": { "patterns": [{ "include": "#symbols-at" }] },
         "2": { "name": "keyword.control.twirl.m" }
@@ -60,6 +65,7 @@
     },
     "scala-line": {
       "name": "meta.embedded.scala.scalaLine",
+      "comment": "Scala expression @(t: T) , matching nested braces.",
       "begin": "(@)[\\w\\.]*\\(",
       "end": "\\)",
       "beginCaptures": {
@@ -76,6 +82,7 @@
       "name": "meta.embedded.scala.curly",
       "begin": "(@)[^\\S\r\n]*\\{$",
       "end": "(?=[\\n ;!#%&*+\\-<@>\/?\\^|~£§])",
+      "comment": "Same as #scala-inline but for curly braces }{ instead.",
       "beginCaptures": {
         "1": { "patterns": [{ "include": "#symbols-at" }] }
       },
@@ -85,6 +92,7 @@
       "name": "meta.embedded.scala.source.block",
       "begin": "(@)[\\w\\.]*\\{",
       "end": "\\}",
+      "comment": "I don't know what this does anymore. I learnt that we could add comments here too late.",
       "beginCaptures": {
         "1": { "patterns": [{ "include": "#symbols-at" }] }
       },
@@ -97,6 +105,7 @@
       "name": "meta.embedded.scala.source.expr",
       "begin": "(@)([\\w\\.]*)\\(",
       "end": "\\)",
+      "comment": "A Scala expression in Twirl - matching @something(...).",
       "beginCaptures": {
         "1": { "patterns": [{ "include": "#symbols-at" }] },
         "2": {
@@ -115,6 +124,7 @@
     "scala-importStatement": {
       "name": "meta.embedded.scala.source.importStatementLine",
       "match": "(@)[ ]*(import [^@*\\n\\r]*)(.*)",
+      "comment": "An import statement, attempts to capture anything that isn't @* and then match that as Scala source, then match the remainder after that as a Twirl comment.",
       "captures": {
         "1": { "patterns": [{ "include": "#symbols-at" }] },
         "2": { "patterns": [{ "include": "source.scala" }] },
@@ -126,12 +136,13 @@
       "name": "meta.embedded.util.matchCurlyTemplateBlock",
       "begin": "\\{",
       "end": "\\}",
-      "patterns": [{ "include": "#twirl-in-html" }, { "include": "$self" }]
+      "patterns": [{ "include": "$self" }]
     },
     "scala-template-block": {
       "name": "meta.embedded.twirl.source.templateBlock",
       "begin": "(@)([\\w\\.]*)\\s*\\=\\s*\\{",
       "end": "\\}",
+      "comment": "Attempts to match a template block in assignment, so @ something = { ... }",
       "beginCaptures": {
         "1": { "patterns": [{ "include": "#symbols-at" }] },
         "2": { "patterns": [{ "name": "keyword.control" }] }
@@ -141,16 +152,11 @@
         { "include": "$self" }
       ]
     },
-    "twirl-in-html": {
-      "name": "meta.embedded.twirl.inlineTwirl",
-      "begin": "<",
-      "end": ">",
-      "patterns": [{ "include": "$self" }, { "include": "#html-inline-attr" }]
-    },
     "twirl-template-params": {
       "name": "meta.embedded.twirl.templateHeader.parameters.ident",
-      "begin": "(@)([\\s]*[(][^)]*\\))(\\g<2>*)",
+      "begin": "(@)([\\s]+[(][^)]*\\))(\\g<2>*)",
       "end": "(?:[\\s]*)[)]([\\s]*[(][^)]*[)])*",
+      "comment": "Attempts to match the template parameters of a Twirl HTML file.",
       "beginCaptures": {
         "1": { "patterns": [{ "include": "#symbols-at" }] },
         "0": { "patterns": [{ "include": "source.scala" }] }
